@@ -2,7 +2,9 @@
   "name": "@my-workspace/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "s": "nx run-many --parallel --target=serve --projects gateway auth"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",

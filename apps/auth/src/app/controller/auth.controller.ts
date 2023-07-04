@@ -14,6 +14,6 @@ export class AuthController {
   @MessagePattern(RMQ_CMD.LOGIN)
   login(@Payload() loginDto: any, @Ctx() context: RmqContext) {
     this.rabbitmqService.ack(context)
-    return 'hello from sevice'
+    return loginDto
   }
 }
