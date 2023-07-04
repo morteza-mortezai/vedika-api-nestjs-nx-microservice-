@@ -10,8 +10,8 @@ export class AuthController {
 
   @Post('login')
   login(@Body() loginDto: LoginDto) {
-    // return lastValueFrom(this.authClient.send(RMQ_CMD.LOGIN, loginDto))
-    this.authClient.emit(RMQ_CMD.LOGIN, loginDto)
-    return 'Hello'
+    return lastValueFrom(this.authClient.send(RMQ_CMD.LOGIN, loginDto))
+    // this.authClient.emit(RMQ_CMD.LOGIN, loginDto)
+    // return 'Hello'
   }
 }
