@@ -23,6 +23,7 @@ export class TypeOrmConfig implements TypeOrmOptionsFactory {
             port: this.environmentService.getPostgresPort(),
             username: this.environmentService.getPostgresUser(),
             database: this.environmentService.getPostgresDb(),
+            password: this.environmentService.getPostgresPassword(),
             entities: [join(__dirname, '**/**.entity{.ts,.js}')],
             synchronize: true,
             logging: true,

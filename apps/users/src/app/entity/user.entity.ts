@@ -1,22 +1,22 @@
-import { Column, Entity, ObjectIdColumn, ObjectId } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmail } from "class-validator"
 @Entity()
 export class User {
 
-    @ObjectIdColumn()
-    _id: ObjectId
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column({
         nullable: false,
         default: '',
     })
-    first_name: string;
+    firstName: string;
 
     @Column({
         nullable: false,
         default: '',
     })
-    last_name: string;
+    lastName: string;
 
     @Column({
         unique: true,
