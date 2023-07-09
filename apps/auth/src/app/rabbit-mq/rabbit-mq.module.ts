@@ -10,15 +10,15 @@ import { RabbitmqService } from './rabbit-mq.service';
     providers: [
         RabbitmqService,
         RabbitMqConfig,
-        {
-            provide: RMQ_SERVICES.AUTH,
-            useFactory: (rabbitMqConfig: RabbitMqConfig) => {
-                const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.AUTH);
-                return ClientProxyFactory.create(rabbitMQOptions);
-            },
-            inject: [RabbitMqConfig],
-        }
+        // {
+        //     provide: RMQ_SERVICES.AUTH,
+        //     useFactory: (rabbitMqConfig: RabbitMqConfig) => {
+        //         const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.AUTH);
+        //         return ClientProxyFactory.create(rabbitMQOptions);
+        //     },
+        //     inject: [RabbitMqConfig],
+        // }
     ],
-    exports: [RMQ_SERVICES.AUTH, RabbitmqService]
+    exports: [RabbitmqService, RabbitMqConfig]
 })
 export class RabbitmqModule { }

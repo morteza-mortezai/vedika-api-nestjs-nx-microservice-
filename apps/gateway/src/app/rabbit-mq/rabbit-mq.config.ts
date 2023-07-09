@@ -22,7 +22,7 @@ export class RabbitMqConfig implements RmqConfig {
                 urls: [this._getRmqUri()],
                 queue: this._getQueue(name),
                 persistent: true,
-                noAck: true
+                noAck
             }
         }
         return clientOptions

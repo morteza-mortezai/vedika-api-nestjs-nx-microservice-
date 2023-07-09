@@ -14,4 +14,12 @@ export class EnvironmentService implements RmqEnvironment {
     getRmqQueue(name: string): string {
         return this.configService.get<string>(`RMQ_${name}_QUEUE`);
     }
+
+    getAppPort(): number {
+        return this.configService.get<number>(`APP_PORT`);
+    }
+
+    getGlobalPrefix(): string {
+        return this.configService.get<string>(`GLOBAL_PREFIX`);
+    }
 }

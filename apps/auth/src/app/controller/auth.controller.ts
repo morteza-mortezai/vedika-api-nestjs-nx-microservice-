@@ -1,9 +1,9 @@
-import { RMQ_CMD } from '@libs/common';
-import { Controller, Get } from '@nestjs/common';
+import { RMQ_CMD, RPCExceptionFilter } from '@libs/common';
+import { Controller, UseFilters } from '@nestjs/common';
 import { Payload, MessagePattern, RmqContext, Ctx } from '@nestjs/microservices'
 import { RabbitmqService } from '../rabbit-mq/rabbit-mq.service';
-// import { AppService } from './app.service';
 
+@UseFilters(RPCExceptionFilter)
 @Controller()
 export class AuthController {
   constructor(
@@ -13,7 +13,7 @@ export class AuthController {
 
   @MessagePattern(RMQ_CMD.LOGIN)
   login(@Payload() loginDto: any, @Ctx() context: RmqContext) {
-    this.rabbitmqService.ack(context)
+    // this.rabbitmqService.ack(context)
     return loginDto
   }
 }

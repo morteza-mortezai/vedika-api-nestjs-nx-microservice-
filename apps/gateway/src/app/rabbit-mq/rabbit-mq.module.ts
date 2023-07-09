@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { RMQ_CMD, RMQ_SERVICES } from '@libs/common';
+import { RMQ_SERVICES } from '@libs/common';
 import { ClientProxyFactory } from '@nestjs/microservices';
 import { RabbitMqConfig } from './rabbit-mq.config';
 import { EnvironmentModule } from '../environment/environment.module';
@@ -11,7 +11,7 @@ import { EnvironmentModule } from '../environment/environment.module';
         {
             provide: RMQ_SERVICES.AUTH,
             useFactory: (rabbitMqConfig: RabbitMqConfig) => {
-                const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.AUTH);
+                const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.AUTH, true);
                 return ClientProxyFactory.create(rabbitMQOptions);
             },
             inject: [RabbitMqConfig],
@@ -19,7 +19,7 @@ import { EnvironmentModule } from '../environment/environment.module';
         {
             provide: RMQ_SERVICES.USERS,
             useFactory: (rabbitMqConfig: RabbitMqConfig) => {
-                const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.USERS);
+                const rabbitMQOptions = rabbitMqConfig.getRabbitMQOptions(RMQ_SERVICES.USERS, true);
                 return ClientProxyFactory.create(rabbitMQOptions);
             },
             inject: [RabbitMqConfig],
